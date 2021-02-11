@@ -1,7 +1,10 @@
 (ns random-clojure-function.core-test
-  (:require [clojure.test :refer :all]
-            [random-clojure-function.core :refer :all]))
+  (:require [clojure.test :refer [deftest is testing]]
+            [random-clojure-function.core :as SUT]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest random-function-test
+  (testing "Show random function from Clojure standard library"
+    ;* Checks if the standard-library-functions contains entries 
+    (is (seq SUT/standard-library-functions))
+    ;* Checks if the -main function returns a string
+    (is (string? (SUT/random-function SUT/standard-library-functions)))))
