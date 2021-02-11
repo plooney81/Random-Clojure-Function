@@ -5,6 +5,15 @@
   "Fully qualified function names from clojure.core"
   (vals (ns-publics 'clojure.core)))
 
+(def available-namespace
+  "Returns a list of all available namespaces"
+  (mapcat #(vals (ns-publics %)) (all-ns)))
+
+(defn function-list
+  "Gets a list of functions from a inputted namespace"
+  [namespace]
+  (vals (ns-publics namespace)))
+
 (defn random-function
   "Returns a function name and description from the Clojure Standard Library"
   [function-list]
