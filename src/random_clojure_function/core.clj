@@ -9,6 +9,10 @@
   "Returns a list of all available namespaces"
   (mapcat #(vals (ns-publics %)) (all-ns)))
 
+(def all-public-functions
+  "Fully qualified function names from available"
+  (mapcat #(vals (ns-publics %)) (all-ns)))
+
 (defn function-list
   "Gets a list of functions from a inputted namespace"
   [namespace]
@@ -23,7 +27,9 @@
          "\n\nDescription:\n  " 
          (function-details :doc)
          "\n\nSignature:\n "
-         (function-details :arglists) "\n\n"))
+         (function-details :arglists)
+         "\n\nName Space:\n "
+         (function-details :ns) "\n\n"))
   )
 
 (defn -main
@@ -31,5 +37,5 @@
   [& args]
   (if (seq args)
     (println (random-function (mapcat #(function-list (symbol %)) args)))
-    (println (random-function standard-library-functions))))
+    (println (random-function all-public-functions))))
 
