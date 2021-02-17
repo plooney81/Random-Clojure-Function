@@ -21,14 +21,15 @@
     (str "\n\nName:\n  "
          (function-details :name) 
          "\n\nDescription:\n  " 
-         (function-details :doc) "\n\n"
+         (function-details :doc)
          "\n\nSignature:\n "
-         (function-details :arglists)))
+         (function-details :arglists) "\n\n"))
   )
 
 (defn -main
   "Calls the random-function function from above and prints the output to the user"
   [& args]
-  (println (random-function standard-library-functions))
-  )
+  (if (seq args)
+    (println (random-function (mapcat #(function-list (symbol %)) args)))
+    (println (random-function standard-library-functions))))
 
