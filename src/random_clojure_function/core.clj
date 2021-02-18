@@ -26,14 +26,14 @@
   [function-list]
   (let [function-details (meta (rand-nth function-list))]
     ;todo Change below to output actual html
-    (str "\n\nName:\n  "
-         (function-details :name) 
-         "\n\nDescription:\n  " 
-         (function-details :doc)
-         "\n\nSignature:\n "
-         (function-details :arglists)
-         "\n\nName Space:\n "
-         (function-details :ns) "\n\n"))
+    (str "<h1>Name:</h1>\n"
+         "<p>" (function-details :name) "</p>\n" 
+         "<h2>Description:</h2>\n" 
+         "<p>" (function-details :doc) "</p>\n"
+         "<h2>Signature:</h2>\n"
+         "<p>" (function-details :arglists) "</p>\n"
+         "<h2>Name Space:</h2>\n"
+         "<p>" (function-details :ns) "</p>"))
   )
 
 (defn output-random-function-string
