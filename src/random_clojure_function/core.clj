@@ -25,15 +25,26 @@
   "Returns a function name and description from the Clojure Standard Library"
   [function-list]
   (let [function-details (meta (rand-nth function-list))]
-    ;todo Change below to output actual html
-    (str "<h1>Name:</h1>\n"
+    (str 
+     "<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>Clojure Random Function Generator</title>
+</head>
+<body>"     
+     "<h1>Name:</h1>\n"
          "<p>" (function-details :name) "</p>\n" 
          "<h2>Description:</h2>\n" 
          "<p>" (function-details :doc) "</p>\n"
          "<h2>Signature:</h2>\n"
          "<p>" (function-details :arglists) "</p>\n"
          "<h2>Name Space:</h2>\n"
-         "<p>" (function-details :ns) "</p>"))
+         "<p>" (function-details :ns) "</p>"
+     "</body>
+</html>"))
   )
 
 (defn output-random-function-string
